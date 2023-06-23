@@ -8,6 +8,9 @@ app.get('/', (req, res)=> {
 app.get('/', (req, res)=> {
     res.send('Hi man!!!)')
 })
+app.get('/', (req, res)=> {
+    res.send('Hi man!!!)')
+})
 
 app.listen(port, ()=>{
     console.log(`Express starting on port ${port}`)
