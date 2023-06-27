@@ -58,4 +58,5 @@ jobs:
             source ~/.nvm/nvm.sh
             cd ~/behind.line.pm/api
             npm install
-            pm2 restart api
+            npm run start
+#            pm2 restart api
