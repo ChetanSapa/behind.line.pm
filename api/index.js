@@ -3,11 +3,9 @@ const app = express()
 const port = 9000
 
 app.get('/', (req, res)=> {
-    res.send('Hi man!!! yo!)')
+    res.send('Hi man!!! yo! Man!)')
 })
-app.get('/', (req, res)=> {
-    res.send('Hi man!!!)')
-})
+
 app.listen(port, ()=>{
     console.log(`Express starting on port ${port}`)
 })
