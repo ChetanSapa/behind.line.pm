@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import Menu from "../components/Menu";
 import validator from "email-validator";
+import {useNavigate} from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({server_host}) => {
 
     const [userData, setUserData] = useState({email: '', password: ''})
     const [pass, setPass] = useState('')
     const [message, setMessage] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+
+    const navigate = useNavigate()
 
     const getUserData = (name, value) => {
         setUserData({
@@ -16,20 +20,24 @@ const Signup = () => {
     }
 
     const  signUp = async () => {
+        setIsDisabled(true)
         setMessage('')
         if (!userData.email || !userData.password || !pass){
             setMessage('Please fill all inputs')
+            setIsDisabled(false)
             return
         }
         if (userData.password !== pass){
             setMessage('Password mismatch')
+            setIsDisabled(false)
             return;
         }
         if (!validator.validate(userData.email)){
             setMessage('Please enter a valid email address')
+            setIsDisabled(false)
         }
 
-        const res = await fetch('http://localhost:9001/users/signup', {
+        const res = await fetch(server_host + '/users/signup', {
             method: 'post',
             credentials: 'include',
             body: JSON.stringify(userData),
@@ -41,17 +49,19 @@ const Signup = () => {
         setPass('')
         const data = await res.json()
 
-        if (data.data) {
-            setMessage('Registration done')
+        if (data.ok) {
+            setMessage(data.message)
+            navigate('/dashboard')
         } else {
-            setMessage(`${data.message}`)
+            setIsDisabled(false)
+            setMessage(data.message)
         }
     }
 
 
     return (
         <div className={'container'}>
-            <Menu />
+            <Menu server_host={server_host} />
             <div className="signup-form">
                 <h1>Sign Up</h1>
                 <div className={'message'} style={{display: `block`}}>{message}</div>
@@ -62,7 +72,7 @@ const Signup = () => {
                                onChange={(e)=> getUserData('password', e.target.value)} value={userData.password} />
                         <input type="password" name={'password'} placeholder={'password again...'}
                                onChange={(e)=> setPass( e.target.value)} value={pass} />
-                        <button type={"button"} onClick={()=> signUp()}>
+                        <button type={"button"} onClick={()=> signUp()} disabled={isDisabled}>
                             Sign Up
                         </button>
                 </form>
