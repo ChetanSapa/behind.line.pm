@@ -13,11 +13,12 @@ app.use(cors({
 }))
 
 let mongoUrl
+let trim = process.env.NODE_ENV.trim()
+console.log(trim)
 
-if (process.env.NODE_ENV.trim() === "development"){
+if (trim === "development"){
     mongoUrl = "mongodb://qwerty:" + process.env.MONGO_DEV_PASS + "@localhost:27017/behindline?authSource=behindline"
 } else {
-    console.log(process.env.NODE_ENV + '1');
     mongoUrl = "mongodb://qwerty:" + process.env.MONGO_PROD_PASS + "@127.0.0.1:27017/behindline?authSource=behindline"
 }
 app.use(sessions({
