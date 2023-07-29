@@ -11,7 +11,6 @@ import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
 
 const server_host = process.env.NODE_ENV === 'development' ? 'http://localhost:9001' : 'https://api.behind.line.pm'
-console.log(process.env.NODE_ENV)
 const router = createBrowserRouter([
     {path: "/", element: <Home server_host={server_host} />,},
     {path: "/login", element: <Login server_host={server_host} />,},
