@@ -35,7 +35,6 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
           script: |
-            export PATH=$PATH:/root/.nvm/versions/node/v20.3.1/bin
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             cd ~/behind.line.pm/client
