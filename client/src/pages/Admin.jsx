@@ -8,7 +8,7 @@ const Admin = ({server_host}) => {
     useEffect(loadUsers, [])
 
     function loadUsers() {
-        fetch('http://localhost:9001/users/get/all', {
+        fetch(server_host + '/users/get/all', {
             method: 'get',
             credentials: 'include',
         }).then(res => {
@@ -23,7 +23,7 @@ const Admin = ({server_host}) => {
             <Menu server_host={server_host} />
             <h1>Admin page</h1>
             {/*<span><NavLink to={'/users'}>Users</NavLink></span>*/}
-            <div className={'users-list'}>
+            <div className={'users-list'} >
                 {users.map(user => <div className={'users-list-user'} key={user._id}>
                     <p>Id: {user._id}</p>
                     <p>Email: {user.email}</p>
