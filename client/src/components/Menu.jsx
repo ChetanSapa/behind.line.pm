@@ -5,6 +5,7 @@ const Menu = ({server_host}) => {
     const [loading, setLoading] = useState(true)
     const [isAuth, setIsAuth] = useState(false)
     const [userRole, setUserRole] = useState(null)
+    console.log(server_host)
 
     useEffect(() => {
         (async () => {
