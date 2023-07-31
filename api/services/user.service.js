@@ -9,7 +9,7 @@ async function save(userData) {
     if (user) {
         return {message: 'User already exist'}
     } else {
-        // const collection = mongoose.model('users')
+        const collection = mongoose.model('users')
         await collection.create({
             email: userData.email,
             password: userData.password,
