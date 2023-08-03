@@ -6,7 +6,7 @@ const Users = ({server_host}) => {
     console.log(users)
 
     function loadUsers() {
-        fetch('http://localhost:9001/users/get/all', {
+        fetch(server_host + '/users/get/all', {
             method: 'get',
             credentials: 'include',
         }).then(res => {

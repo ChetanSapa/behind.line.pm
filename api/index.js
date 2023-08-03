@@ -16,7 +16,7 @@ let mongoUrl
 
 console.log(process.env.NODE_ENV)
 
-if (process.env.NODE_ENV === "development "){
+if (process.env.NODE_ENV === "development"){
     mongoUrl = "mongodb://qwerty:" + process.env.MONGO_DEV_PASS + "@localhost:27017/behindline?authSource=behindline"
 } else {
     console.log(process.env.NODE_ENV + '1');
