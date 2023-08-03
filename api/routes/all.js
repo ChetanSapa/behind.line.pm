@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 router.all('*', (req, res, next) => {
-    // process.env.NODE_ENV = 'development'
     const domain = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://behind.line.pm';
     console.log(domain)
 
