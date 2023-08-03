@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 router.all('*', (req, res, next) => {
     // process.env.NODE_ENV = 'development'
-    const domain = process.env.NODE_ENV === 'development' ? process.env.DEV_HOST : process.env.PROD_HOST;
+    const domain = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://behind.line.pm';
+    console.log(domain)
 
     res.setHeader('Access-Control-Allow-Origin', domain)
     res.setHeader('Access-Control-Allow-Credentials', 'true')

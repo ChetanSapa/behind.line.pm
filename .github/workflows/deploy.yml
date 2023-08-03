@@ -39,8 +39,9 @@ jobs:
             source ~/.nvm/nvm.sh
             cd ~/behind.line.pm/client
             npm install
+            export NODE_ENV=production
             npm run build
-            pm2 restart client
+            pm2 restart client --update-env
   deploy-server:
     if: "contains(github.event.commits[0].message, '[need deploy server]')"
     needs: [update-files]
@@ -59,4 +60,4 @@ jobs:
             cd ~/behind.line.pm/api
             npm install
             npm run start
-            pm2 restart api
+            pm2 restart api --update-env

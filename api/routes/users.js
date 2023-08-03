@@ -81,7 +81,7 @@ router.post('/update', async (req, res) => {
     }
 })
 router.get('/logout', async (req, res) => {
-    const domain = process.env.NODE_ENV === 'development' ? process.env.DEV_HOST : process.env.PROD_HOST
+    const domain = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://behind.line.pm'
 
     req.session.destroy()
     res.clearCookie('connect.sid', {path: '/'})

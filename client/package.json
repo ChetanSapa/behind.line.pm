@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
     "@testing-library/user-event": "*",
+    "cross-env": "^7.0.3",
     "email-validator": "^2.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -36,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
