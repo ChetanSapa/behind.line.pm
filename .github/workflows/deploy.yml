@@ -39,7 +39,6 @@ jobs:
             source ~/.nvm/nvm.sh
             cd ~/behind.line.pm/client
             npm install
-            export NODE_ENV=production
             npm run build
             pm2 restart client --update-env
   deploy-server:
