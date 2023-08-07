@@ -59,4 +59,4 @@ jobs:
             cd ~/behind.line.pm/api
             npm install
             npm run start
-            pm2 restart api --update-env
+#            pm2 restart api --update-env
