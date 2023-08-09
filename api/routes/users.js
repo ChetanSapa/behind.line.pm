@@ -4,7 +4,7 @@ const session = require("express-session");
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.json({ok: true})
+    res.send({ok: true})
 })
 router.get('/me', async (req, res) => {
     const _id = req.session.user._id
@@ -33,7 +33,7 @@ router.post('/signup', async (req, res) => {
         res.json({ok: true, message: 'Registration done. Now you being redirected'})
     } catch (e) {
         console.error(e)
-        res.json({ok: false, message: "Something went wrong", error: e})
+        res.json({ok: false, message: "Something went wrong"})
     }
 })
 router.post('/login', async (req, res) => {
@@ -58,7 +58,7 @@ router.post('/check/auth', async (req, res) => {
     const userId = req.session.user._id
     const data = await getUserById(userId)
     if (data) {
-        res.json({ok: true, role: data._doc.role, message: 'Authorization done'})
+        res.send({ok: true, role: data._doc.role, message: 'Authorization done'})
     } else {
         res.json({ok: false, message: 'Something went wrong'})
     }
