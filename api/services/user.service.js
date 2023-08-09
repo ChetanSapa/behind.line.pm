@@ -14,7 +14,7 @@ async function save(userData) {
             email: userData.email,
             password: userData.password,
             username: 'user' + new Date().getTime(),
-            role: 'admin'
+            role: 'user'
         })
         return {message: 'User was successfully created'}
     }
