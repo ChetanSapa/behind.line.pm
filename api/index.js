@@ -7,6 +7,8 @@ const logger = require('morgan')
 const sessions = require('express-session')
 const MongoStore = require('connect-mongo')
 
+process.title = 'api';
+
 app.use(cors({
     credentials: true,
     origin: ['http://localhost:3000', 'https://behind.line.pm']
