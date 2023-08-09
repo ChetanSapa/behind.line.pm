@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {createBrowserRouter, RouterProvider,} from "react-router-dom";
+import {createBrowserRouter, createHashRouter, RouterProvider,} from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
@@ -15,7 +15,7 @@ let server_host = process.env.NODE_ENV === 'development' ? 'http://localhost:900
 console.log('-- 16:40 --')
 console.log(process.env.NODE_ENV)
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {path: "/", element: <Home server_host={server_host}/>,},
     {path: "/login", element: <Login server_host={server_host}/>,},
     {path: "/signup", element: <Signup server_host={server_host}/>,},
