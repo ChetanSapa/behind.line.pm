@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
     "@testing-library/user-event": "*",
@@ -10,10 +11,9 @@
     "email-validator": "^2.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.12.2-pre.0",
+    "react-router-dom": "^6.14.2",
     "react-scripts": "*",
-    "web-vitals": "*",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.0"
+    "web-vitals": "*"
   },
   "scripts": {
     "start": "react-scripts start",
