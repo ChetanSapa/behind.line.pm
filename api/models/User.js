@@ -16,7 +16,7 @@ const schema = new Schema({
     },
     role:{
         type: String,
-        default: 'user'
+        default: 'admin'
     },
 }, {autoCreate: true})
 
