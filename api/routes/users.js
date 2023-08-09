@@ -4,7 +4,7 @@ const session = require("express-session");
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.send({ok: true})
+    res.json({ok: true})
 })
 router.get('/me', async (req, res) => {
     const _id = req.session.user._id
@@ -58,7 +58,7 @@ router.post('/check/auth', async (req, res) => {
     const userId = req.session.user._id
     const data = await getUserById(userId)
     if (data) {
-        res.send({ok: true, role: data._doc.role, message: 'Authorization done'})
+        res.json({ok: true, role: data._doc.role, message: 'Authorization done'})
     } else {
         res.json({ok: false, message: 'Something went wrong'})
     }
