@@ -57,6 +57,7 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             cd ~/behind.line.pm/api
+            pm2 stop api
             npm install
             npm run start
-#            pm2 restart api --update-env
+            pm2 start api --update-env

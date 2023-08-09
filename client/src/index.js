@@ -16,12 +16,12 @@ console.log('-- 16:40 --')
 console.log(process.env.NODE_ENV)
 
 const router = createBrowserRouter([
-    {path: "/", element: <Home server_host={server_host} />,},
-    {path: "/login", element: <Login server_host={server_host} />,},
-    {path: "/signup", element: <Signup server_host={server_host} />,},
-    {path: "/users", element: <Users server_host={server_host} />,},
-    {path: "/dashboard", element: <Dashboard server_host={server_host} />,},
-    {path: "/admin", element: <Admin server_host={server_host} />,},
+    {path: "/", element: <Home server_host={server_host}/>,},
+    {path: "/login", element: <Login server_host={server_host}/>,},
+    {path: "/signup", element: <Signup server_host={server_host}/>,},
+    {path: "/users", element: <Users server_host={server_host}/>,},
+    {path: "/dashboard", element: <Dashboard server_host={server_host}/>,},
+    {path: "/admin", element: <Admin server_host={server_host}/>,},
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
