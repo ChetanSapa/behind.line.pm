@@ -10,7 +10,7 @@ import Users from "./pages/Users";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
 
-let server_host = process.env.NODE_ENV === 'development' ? 'http://localhost:9001' : 'https://api.behind.line.pm'
+let server_host = process.env.NODE_ENV === 'development' ? 'http://localhost:9001' : 'https://api.behind.line.pm/#/'
 
 console.log('-- 16:40 --')
 console.log(process.env.NODE_ENV)

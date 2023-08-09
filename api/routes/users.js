@@ -33,7 +33,7 @@ router.post('/signup', async (req, res) => {
         res.json({ok: true, message: 'Registration done. Now you being redirected'})
     } catch (e) {
         console.error(e)
-        res.json({ok: false, message: "Something went wrong"})
+        res.json({ok: false, message: "Something went wrong", error: e})
     }
 })
 router.post('/login', async (req, res) => {
