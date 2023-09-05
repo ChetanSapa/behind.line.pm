@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
     "@testing-library/user-event": "*",
+    "axios": "^1.5.0",
     "cross-env": "^7.0.3",
     "email-validator": "^2.0.4",
     "react": "^18.2.0",

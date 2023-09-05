@@ -15,6 +15,7 @@ code {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
+    align-self: center;
 }
 
 a {
@@ -34,6 +35,16 @@ a:visited {
 /* mouse over link */
 a:hover {
     color: black;
+}
+button{
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
 /* selected link */
@@ -85,15 +96,15 @@ a:active {
     height: 25px;
     color: chocolate;
     padding: 10px 0 20px 0;
-    /*-moz-animation: hideMessage 3s 4s forwards;*/
+    -moz-animation: hideMessage 3s 4s forwards;
     /*!* Firefox *!*/
-    /*-webkit-animation: hideMessage 3s 4s forwards;*/
+    -webkit-animation: hideMessage 3s 4s forwards;
     /*!* Safari and Chrome *!*/
-    /*-o-animation: hideMessage 3s 4s forwards;*/
+    -o-animation: hideMessage 3s 4s forwards;
     /*!* Opera *!*/
     animation: hideMessage 3s 4s forwards;
-    /*-webkit-animation-fill-mode: forwards;*/
-    /*animation-fill-mode: forwards;*/
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 @keyframes hideMessage {
     from{ color: chocolate;}
@@ -127,33 +138,148 @@ a:active {
     background-color: green;
     cursor: pointer;
 }
-.users-list {
+.user-page{
+
+}
+.users-page-list{
     display: flex;
     flex-direction: row;
-    padding-top: 70px;
+    flex-wrap: wrap;
+    font-size: 13px;
 }
-.users-list-user{
+.users-page-list-user{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
     border: 1px solid gray;
     border-radius: 3px;
-    margin: 10px;
+    width: 19%;
 }
-.users-list div {
-    padding: 20px 10px;
+.users-page-list-user p{
+    margin: 5px;
 }
 
+.user-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.user-page-desc{
+    width: 60%;
+}
+.user-page-photo{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 10px;
+    width: 30%;
+}
+.user-page-photo img{
+    margin-bottom: 10px;
+}
+
+.search-panel{
+    width: 20%;
+    margin: 20px 15px;
+}
+.search-panel input{
+    padding: 5px;
+}
+.dash-board{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .dashboard-form{
 
 }
 
-.dashboard-form h1{
-    padding-bottom: 20px;
-}
 .dashboard-form form{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 300px;
 }
 .dashboard-form form input{
     padding: 5px;
+    margin-bottom: 5px;
     border-radius: 3px;
+}
+.dashboard-form form textarea{
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+.dashboard-form form button{
+    width: 30%;
+    align-self: flex-end;
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.dashboard-upload-ava {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.dashboard-upload-ava label{
+    margin: 10px 0;
+}
+.dashboard-upload-ava button{
+    width: 30%;
+    align-self: flex-end;
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.gallery {
+    width: 50%;
+    margin-top: 50px;
+}
+.gallery-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+}
+.gallery-list-item{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 23%;
+    padding: 10px;
+}
+.gallery-list-item img{
+    width: 100%;
+    height: 100px;
+    padding-bottom: 10px;
+}
+.ads_list_category{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 20%;
+    margin: 15px;
+}
+.ad{
+    width: 100%;
+    height: 100px;
+    margin: 15px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.dashboard-ads{
+    margin: 15px;
 }

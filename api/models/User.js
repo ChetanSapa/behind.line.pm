@@ -18,6 +18,18 @@ const schema = new Schema({
         type: String,
         default: 'user'
     },
+    birthday: {
+        type: Date,
+    },
+    name: {
+        type: String,
+    },
+    about: {
+        type: String,
+    },
+    files: [{type: Schema.Types.ObjectId, ref: 'File'}],
+    avatar: {type: Schema.Types.ObjectId, ref: 'File'},
+
 }, {autoCreate: true})
 
 const User = mongoose.model('users', schema)

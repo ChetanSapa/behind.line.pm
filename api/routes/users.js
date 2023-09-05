@@ -1,10 +1,32 @@
 const express = require('express')
-const {save, getAllUsers, delAllUsers, getDataForLogin, getUserById, updateUser} = require("../services/user.service");
+const {save, getAllUsers, delAllUsers, getDataForLogin, getUserById, updateUser, getUsersByQuery} = require("../services/user.service");
 const session = require("express-session");
+const {raw} = require("express");
 const router = express.Router()
 
 router.get('/', (req, res) => {
     res.send({ok: true})
+})
+router.get('/search', async (req, res) => {
+
+    const query = req.query
+    const data = await getUsersByQuery(query)
+
+    res.send({ok: true, data})
+})
+router.get('/id/:id', async (req, res) => {
+    let user
+    let isAdmin
+    try {
+        const _id = req.session.user._id
+        const me = await getUserById(_id)
+        isAdmin = me.role === 'admin'
+        user = await getUserById(req.params.id, isAdmin)
+    } catch (e) {
+        user = await getUserById(req.params.id)
+    }
+
+    res.json({ok: true, user, isAdmin})
 })
 router.get('/me', async (req, res) => {
     const _id = req.session.user._id
@@ -12,10 +34,19 @@ router.get('/me', async (req, res) => {
     res.json({ok: true, user})
 })
 router.get('/get/all', async (req, res) => {
-
-    const users = await getAllUsers()
-
-    res.json({ok: true, users: users})
+    let users
+    let isAdmin
+    try {
+        const _id = req.session.user._id
+        const me = await getUserById(_id)
+        console.log(me.role)
+        isAdmin = me.role === 'admin'
+        users = await getAllUsers(isAdmin)
+    } catch (e) {
+        users = await getAllUsers()
+    }
+    console.log(isAdmin)
+    res.json({ok: true, isAdmin: isAdmin, users: users})
 })
 router.get('/delete/all', async (req, res) => {
 

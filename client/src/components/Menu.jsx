@@ -34,8 +34,10 @@ const Menu = ({server_host}) => {
             <div className={'menu-nav-btn'}>
                 <span><NavLink to={'/'}>Main</NavLink></span>
                 <span><NavLink to={'/dashboard'}>Dashboard</NavLink></span>
+                <span><NavLink to={'/users'}>Users</NavLink></span>
                 {/*{userRole === 'admin' && <span><NavLink to={'/users'}>Users</NavLink></span>}*/}
                 {userRole === 'admin' && <span><NavLink to={'/admin'}>Admin</NavLink></span>}
+                <span><NavLink to={'/ads/category/all'}>Ads</NavLink></span>
             </div>
             <div className="menu-auth-btn">
                 {!isAuth && <span><NavLink to={'/login'}>Log In</NavLink></span>}

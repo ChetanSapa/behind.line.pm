@@ -41,12 +41,18 @@ app.use(sessions({
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const allRouter = require('./routes/all')
+const oauthRouter = require('./routes/oauth')
+const filesRouter = require('./routes/files')
+const adsRouter = require('./routes/ads')
 
 app.use(logger('dev'))
 app.use(express.json())
 app.use('*', allRouter)
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
+app.use('/oauth', oauthRouter)
+app.use('/files', filesRouter)
+app.use('/ads', adsRouter)
 app.listen(port, ()=>{
     console.log(`Express starting on port ${port}`)
 })

@@ -1,0 +1,84 @@
+const express = require('express')
+const multer = require("multer");
+const {getUserById, updateUser} = require("../services/user.service");
+const {saveFile, getFileById, deleteFileById} = require("../services/file.service");
+const fs = require("fs");
+const router = express.Router()
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cd) {
+        cd(null, './uploads')
+    },
+    filename: function (req, file, cd) {
+        const extension = /[^.]+$/.exec(file.originalname)
+        const path = '/uploads'
+        cd(null, Date.now() + Math.floor(Math.random() + 100000) + '.' + extension)
+    }
+})
+
+const upload = multer({
+    storage
+})
+router.post('/upload', upload.single('file'), async (req, res) => {
+
+    try {
+        const _id = req.session.user._id
+        console.log(_id + ' id')
+        const me = await getUserById(_id)
+        console.log(me)
+        console.log('/' + req.file.path)
+        // let path = req.file.path.replace(/\\/g, '/')
+        console.log('\\' + req.file.path)
+        const uploadedFile = await saveFile('\\' + req.file.path, me)
+
+        console.log(uploadedFile)
+
+        me['files'] = me.files ? me.files.push(uploadedFile) : [uploadedFile]
+        me['avatar'] = uploadedFile
+
+        await updateUser(me)
+        console.log(me)
+
+        console.log(req.files)
+        res.json({ok: true})
+
+        res.status(200)
+    } catch (e) {
+        res.status(401)
+    }
+})
+
+router.get('/id/:id', async (req, res) => {
+
+    const file = await getFileById(req.params.id)
+
+    res.sendFile(file.path, {root: process.cwd()})
+})
+
+router.post('/delete/id/:id', async (req, res) => {
+
+    try {
+        const _id = req.session.user._id
+        const me = await getUserById(_id)
+
+        if (me.avatar._id.toString() === req.params.id){
+            me['avatar'] = null
+        }
+
+        me.files.pull({_id: req.params.id})
+
+        await updateUser(me)
+
+        const file = await getFileById(req.params.id)
+        if (file) {
+            fs.unlinkSync(process.cwd() + file.path)
+            await deleteFileById(req.params.id)
+        }
+        res.json({message: 'File successfully deleted'})
+    }catch (e) {
+        res.json(e)
+    }
+
+})
+
+module.exports = router

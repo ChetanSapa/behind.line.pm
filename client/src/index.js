@@ -9,6 +9,10 @@ import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
+import UserPage from "./pages/UserPage";
+import AdsListPage from './pages/AdsListPage';
+import AdPage from './pages/AdPage';
+import CreateEditAdPage from './pages/CreateEditAdPage';
 
 let server_host = process.env.NODE_ENV === 'development' ? 'http://localhost:9001' : 'https://api.behind.line.pm'
 
@@ -22,6 +26,12 @@ const router = createHashRouter([
     {path: "/users", element: <Users server_host={server_host}/>,},
     {path: "/dashboard", element: <Dashboard server_host={server_host}/>,},
     {path: "/admin", element: <Admin server_host={server_host}/>,},
+    {path: "/ads/", element: <AdsListPage server_host={server_host}/>},
+    {path: "/ads/category/:category", element: <AdsListPage server_host={server_host}/>},
+    {path: "/ads/:id", element: <AdPage server_host={server_host}/>},
+    {path: "/ads/create", element: <CreateEditAdPage server_host={server_host}/>},
+    {path: "/ads/edit/:id", element: <CreateEditAdPage server_host={server_host}/>},
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
