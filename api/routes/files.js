@@ -12,6 +12,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         const extension = /[^.]+$/.exec(file.originalname)
         const path = '/uploads'
+        fs.mkdirSync(path, {recursive: true})
         cb(null, Date.now() + Math.floor(Math.random() + 100000) + '.' + extension)
     }
 })
@@ -29,8 +30,8 @@ router.post('/upload', upload.single('file'), async (req, res) => {
         console.log('/' + req.file.path)
         // let path = req.file.path.replace(/\\/g, '/')
         console.log('\\' + req.file.path)
-        // const uploadedFile = await saveFile('\\' + req.file.path, me)
-        const uploadedFile = await saveFile('/' + req.file.path, me)
+        const uploadedFile = await saveFile('\\' + req.file.path, me)
+        // const uploadedFile = await saveFile('/' + req.file.path, me)
 
         console.log(uploadedFile)
 
