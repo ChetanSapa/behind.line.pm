@@ -6,13 +6,13 @@ const fs = require("fs");
 const router = express.Router()
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cd) {
-        cd(null, './uploads')
+    destination: function (req, file, cb) {
+        cb(null, './uploads')
     },
-    filename: function (req, file, cd) {
+    filename: function (req, file, cb) {
         const extension = /[^.]+$/.exec(file.originalname)
         const path = '/uploads'
-        cd(null, Date.now() + Math.floor(Math.random() + 100000) + '.' + extension)
+        cb(null, Date.now() + Math.floor(Math.random() + 100000) + '.' + extension)
     }
 })
 
@@ -41,11 +41,11 @@ router.post('/upload', upload.single('file'), async (req, res) => {
         console.log(me)
 
         console.log(req.files)
-        res.json({ok: true})
+        // res.json({ok: true})
 
-        res.status(200)
+        res.status(200).end()
     } catch (e) {
-        res.status(401)
+        res.status(401).end()
     }
 })
 
@@ -62,9 +62,9 @@ router.post('/delete/id/:id', async (req, res) => {
         const _id = req.session.user._id
         const me = await getUserById(_id)
 
-        if (me.avatar._id.toString() === req.params.id){
-            me['avatar'] = null
-        }
+        if (me.avatar != null 
+            && (me.avatar._id.toString() === req.params.id)) {
+            me['avatar'] = null}
 
         me.files.pull({_id: req.params.id})
 
