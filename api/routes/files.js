@@ -30,8 +30,8 @@ router.post('/upload', upload.single('file'), async (req, res) => {
         console.log('/' + req.file.path)
         // let path = req.file.path.replace(/\\/g, '/')
         console.log('\\' + req.file.path)
-        const uploadedFile = await saveFile('\\' + req.file.path, me)
-        // const uploadedFile = await saveFile('/' + req.file.path, me)
+        // const uploadedFile = await saveFile('\\' + req.file.path, me)
+        const uploadedFile = await saveFile('/' + req.file.path, me)
 
         console.log(uploadedFile)
 
