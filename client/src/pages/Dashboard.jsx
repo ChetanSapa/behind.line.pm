@@ -95,7 +95,7 @@ const Dashboard = ({server_host}) => {
         console.log(formData)
         console.log(files[0])
 
-        axios.post(server_host + '/files/upload', formData, {
+        axios.post(server_host + '/files/uploads', formData, {
             withCredentials: true,
             headers: {
                 "Content-Type": 'multipart/form-data'

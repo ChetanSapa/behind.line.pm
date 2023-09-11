@@ -15,7 +15,9 @@ async function saveFile(path, user) {
 async function getFileById(id) {
     await dbConnect()
     const collection = mongoose.model('file')
-    return await collection.findOne({_id : id})
+    let file = await collection.findOne({_id : id})
+     
+    return file ? file : ''
 
 }
 async function deleteFileById(id) {

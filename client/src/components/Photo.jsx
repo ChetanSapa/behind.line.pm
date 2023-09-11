@@ -17,7 +17,7 @@ const Photo = ({server_host, user, file}) => {
 
     return (
         <div className="gallery-list-item">
-            <img src={server_host + '/files/id/' + file}/>
+            <img src={server_host + '/files/id/' + file} alt='Ava'/>
             {/*{file === user.avatar && 'Avatar'}*/}
             <button type={"button"} onClick={deletePhoto}>Delete photo</button>
         </div>

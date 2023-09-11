@@ -24,6 +24,7 @@ const router = createHashRouter([
     {path: "/login", element: <Login server_host={server_host}/>,},
     {path: "/signup", element: <Signup server_host={server_host}/>,},
     {path: "/users", element: <Users server_host={server_host}/>,},
+    {path: "/users/:id", element: <UserPage server_host={server_host}/>,},
     {path: "/dashboard", element: <Dashboard server_host={server_host}/>,},
     {path: "/admin", element: <Admin server_host={server_host}/>,},
     {path: "/ads/", element: <AdsListPage server_host={server_host}/>},

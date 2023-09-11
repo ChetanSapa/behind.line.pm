@@ -6,15 +6,16 @@ import Gallery from "../components/Gallery";
 
 const UserPage = ({server_host}) => {
 
-    const[user, setUser] = useState({ _id: "", email: "", username: "", role: "", birthday: "", name: "", about: "" })
+    const[user, setUser] = useState({ _id: "", email: "", username: "", role: "", birthday: "", name: "", about: "", avatar: {}, files: [] })
     const[loading, setLoading] = useState(true)
 
     useEffect(()=>{document.title = 'User page'},[])
     const params = useParams()
-
+    console.log(params.id)
     useEffect(loadUser,[])
 
     function loadUser(){
+        
         fetch(server_host + '/users/id/' + params.id,{
             credentials: 'include'
         }).then(res => {
@@ -22,6 +23,7 @@ const UserPage = ({server_host}) => {
         }).then(data => {
             setLoading(false)
             setUser(data.user)
+            console.log(data.user);
         }).catch(e => {
             console.error(e)
         })

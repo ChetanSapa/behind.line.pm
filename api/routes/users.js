@@ -22,6 +22,7 @@ router.get('/id/:id', async (req, res) => {
         const me = await getUserById(_id)
         isAdmin = me.role === 'admin'
         user = await getUserById(req.params.id, isAdmin)
+        console.log(user + ' user')
     } catch (e) {
         user = await getUserById(req.params.id)
     }
