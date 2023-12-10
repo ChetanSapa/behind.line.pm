@@ -13,7 +13,6 @@ const Gallery = ({server_host, user}) => {
                         user={user}
                         file={file}>
                     </Photo>)}
-                {console.log(user.files)}
             </div>
         </div>
     );

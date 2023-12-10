@@ -34,6 +34,11 @@ a:visited {
 
 /* mouse over link */
 a:hover {
+    color: white;
+    border-bottom: 1px solid white;
+}
+/* selected link */
+a:active {
     color: black;
 }
 button{
@@ -45,11 +50,6 @@ button{
     background-color: green;
     cursor: pointer;
     border-radius: 3px;
-}
-
-/* selected link */
-a:active {
-    color: black;
 }
 
 .container {
@@ -64,7 +64,10 @@ a:active {
 .menu {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    background-color: #57d157;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .menu span {
@@ -152,7 +155,7 @@ a:active {
     flex-direction: column;
     flex-wrap: wrap;
     margin: 10px;
-    border: 1px solid gray;
+    border: 1px solid rgb(128, 128, 128);
     border-radius: 3px;
     width: 19%;
 }
@@ -191,16 +194,31 @@ a:active {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-top: 30px;
+}
+
+.dash-board-sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 49%;
+    /* border: 1px solid gray; */
+    background-color: #dff7e0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .dashboard-form{
-
+    width: 80%;
 }
 
 .dashboard-form form{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 300px;
+    width: 100%;
+}
+.dashboard-form form label{
+    margin: 13px ;
 }
 .dashboard-form form input{
     padding: 5px;
@@ -226,46 +244,78 @@ a:active {
 }
 .dashboard-upload-ava {
     display: flex;
-    flex-direction: column;
-    width: 300px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px;
+    /* padding: 10px; */
+}
+.dashboard-upload-ava form {
+    width: 100%;
 }
 .dashboard-upload-ava label{
-    margin: 10px 0;
+    margin: 13px ;
 }
-.dashboard-upload-ava button{
-    width: 30%;
+.dashboard-form .dashboard-upload-ava input {
+    /* margin: 0; */
+    padding: 0;
+    background-color: #fff;
+}
+ .dashboard-upload-ava button{
+    width: 22%;
     align-self: flex-end;
     padding: 5px;
     margin-bottom: 5px;
-    font-size: 16px;
+     font-size: 16px; 
     border: none;
     color: white;
     background-color: green;
     cursor: pointer;
     border-radius: 3px;
+ }  
+.dash-board-gallery{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
 }
 .gallery {
-    width: 50%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-top: 50px;
 }
 .gallery-list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
-    padding: 10px;
+    width: 80%;
+    /* padding: 10px; */
 }
 .gallery-list-item{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    width: 23%;
+    /* align-items: flex-end; */
+    width: 40%;
     padding: 10px;
 }
 .gallery-list-item img{
     width: 100%;
     height: 100px;
     padding-bottom: 10px;
+}
+.create-ad-form-container {
+    width: 30%;
+}
+.create-ad-form{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    width: 100%;
+}
+.create-ad-form-item{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 .ads_list_category{
     display: flex;
@@ -274,12 +324,70 @@ a:active {
     width: 20%;
     margin: 15px;
 }
+.dashboard-ads{
+    width: 49%;
+    /* margin: 15px; */
+    background-color: #dff7e0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.dashboard-ads h2 {
+    margin: 18px ;
+}
+.dashboard-ads-link{
+    margin: 18px ;
+}
+.dashboard-ads-link a:hover{
+    color: black;
+    border-bottom: 1px solid black;
+}
 .ad{
-    width: 100%;
-    height: 100px;
-    margin: 15px;
+    margin: 15px 15px;
+    padding: 15px;
+    background-color: white;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.dashboard-ads{
-    margin: 15px;
+.ad-fields{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.ad-fields:last-child{
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 50px;
+}
+.ad-left-side-fields{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.ad-right-side-fields{
+    display: flex;
+    flex-direction: column;
+}
+.ad-field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 13px;
+    /*border: 1px solid grey;*/
+    font-size: 16px;
+}
+.ad-field-images{
+    width: 100%;
+}
+.ad-field span{
+    font-size: 13px;
+    color: rgba(0,0,0,0.5);
+}
+.ad a{
+    color: white;
+}
+.ad a:hover{
+    text-decoration: none;
+    border-bottom: 0;
+}
+.ad button{
+    margin: 5px;
+    padding: 5px;
 }

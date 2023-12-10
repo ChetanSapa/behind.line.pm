@@ -24,26 +24,15 @@ router.post('/uploads', upload.single('file'), async (req, res) => {
 
     try {
         const _id = req.session.user._id
-        console.log(_id + ' id')
         const me = await getUserById(_id)
-        console.log(me)
-        console.log('/' + req.file.path + ' path 1')
         let path = req.file.path.replace(/\\/g, '/')
-        console.log('\\' + req.file.path + ' path 2')
-        console.log('/' + path + ' path 3')
         // const uploadedFile = await saveFile('\\' + req.file.path, me)
         const uploadedFile = await saveFile('/' + path, me)
-
-        console.log(uploadedFile + ' uploadedFile')
 
         me['files'] = me.files ? me.files.push(uploadedFile) : [uploadedFile]
         me['avatar'] = uploadedFile
 
         await updateUser(me)
-        console.log(me)
-
-        console.log(req.files + ' req.files')
-        // res.json({ok: true})
 
         res.status(200).end()
     } catch (e) {
